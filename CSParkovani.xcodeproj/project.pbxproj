@@ -12,6 +12,7 @@
 		683F9343A7A732FCA39573E7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 683F98E9350C3EFC63D11656 /* UIKit.framework */; };
 		683F950EA67647F2E3DCDD70 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 683F98E9350C3EFC63D11656 /* UIKit.framework */; };
 		683F9610EB621EFE6884FEA1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 683F9EB83C3276913E32E9BC /* Foundation.framework */; };
+		683F984258EF7D607176A6E3 /* AddParkingTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 683F9C165F06815D76B9695D /* AddParkingTableCell.m */; };
 		683F98509D63CF775C2A0AA0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 683F9D5DEBDF51925ACFB92C /* CoreGraphics.framework */; };
 		683F991C2E797CDA3C52D384 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 683F91E5D61CBD308833EBD9 /* Images.xcassets */; };
 		683F9BD7D2A8CA23BC7F664E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 683F9A71882709E2C4F87705 /* InfoPlist.strings */; };
@@ -45,6 +46,7 @@
 		0D4954F4389A471882E52F20 /* Pods-CSParkovani.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CSParkovani.xcconfig"; path = "Pods/Pods-CSParkovani.xcconfig"; sourceTree = "<group>"; };
 		683F91E43DACA421CC779AE1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		683F91E5D61CBD308833EBD9 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		683F92D3A07CBBC01EE1A2C6 /* AddParkingTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddParkingTableCell.h; sourceTree = "<group>"; };
 		683F96EAAC8643FD1F27A2F0 /* CSParkovani.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CSParkovani.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		683F9796F90F36ED1797EE35 /* CSParkovani-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.info; path = "CSParkovani-Info.plist"; sourceTree = "<group>"; };
 		683F98B96967FDD78112B898 /* CSParkovaniTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CSParkovaniTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -53,6 +55,7 @@
 		683F99D93984A24A84D7FCA6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		683F9A935B1F4D8E3E928397 /* CSParkovaniTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.info; path = "CSParkovaniTests-Info.plist"; sourceTree = "<group>"; };
 		683F9ACAA03A42B408F49B9A /* CSParkovani-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CSParkovani-Prefix.pch"; sourceTree = "<group>"; };
+		683F9C165F06815D76B9695D /* AddParkingTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddParkingTableCell.m; sourceTree = "<group>"; };
 		683F9CDB22D49FCF90ABA681 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		683F9D5DEBDF51925ACFB92C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		683F9E429A7FF6881DDE78D1 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -207,6 +210,8 @@
 				F993AC9F18CFD0C30088E6D2 /* AddParkingViewController.m */,
 				F993ACAE18CFD3190088E6D2 /* ParkingMasterTableCell.h */,
 				F993ACAF18CFD3190088E6D2 /* ParkingMasterTableCell.m */,
+				683F92D3A07CBBC01EE1A2C6 /* AddParkingTableCell.h */,
+				683F9C165F06815D76B9695D /* AddParkingTableCell.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -351,6 +356,7 @@
 				F993AC9D18CFD09D0088E6D2 /* ParkingDetailViewController.m in Sources */,
 				F993AC9A18CFD0760088E6D2 /* TrackedParkingsViewController.m in Sources */,
 				F993ACAD18CFD1D90088E6D2 /* PredictionValue.m in Sources */,
+				683F984258EF7D607176A6E3 /* AddParkingTableCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

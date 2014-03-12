@@ -7,12 +7,16 @@
 //
 
 #import "AddParkingViewController.h"
+#import "AddParkingTableCell.h"
+#import "Parking.h"
 
 @interface AddParkingViewController ()
 
 @end
 
-@implementation AddParkingViewController
+@implementation AddParkingViewController {
+
+}
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -40,28 +44,31 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - Table view data source
-
+/*
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
     return 0;
 }
+**/
+
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 0;
+    return [Parking parkingsDictionary].count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    
-    // Configure the cell...
+    static NSString *CellIdentifier = @"AddParkingTableCell";
+    AddParkingTableCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+
+    if (cell == nil) {
+        cell = [[AddParkingTableCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"AddParkingTableCell"];
+    }
+
+    cell.textLabel.text = ((Parking *)[[Parking parkingsDictionary].allValues objectAtIndex:indexPath.row]).truncatedName;
     
     return cell;
 }
