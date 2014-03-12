@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Osu-Et-Pzh">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
+    </dependencies>
+    <scenes>
+        <!--Tracked Parkings View Controller - Moje parkoviště-->
+        <scene sceneID="bV3-9r-Lfr">
+            <objects>
+                <tableViewController id="DW6-8e-30L" customClass="TrackedParkingsViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="6gw-DB-3ab">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ParkingMasterTableCell" id="CLj-wP-qC6" customClass="ParkingMasterTableCell">
+                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="CLj-wP-qC6" id="oW3-FA-EgY">
+                                    <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="Vpc-6k-Fv8" kind="push" id="67Q-dC-Fe1"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="DW6-8e-30L" id="5aE-JN-gzo"/>
+                            <outlet property="delegate" destination="DW6-8e-30L" id="AkI-9A-FK5"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Moje parkoviště" id="U1V-96-mUc">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="9Yf-8o-OXm">
+                            <connections>
+                                <segue destination="7Wc-nG-zeH" kind="push" id="EAH-Lw-Jhu"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="trackedParkingTable" destination="6gw-DB-3ab" id="QS6-UV-baF"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="L3l-Gj-quB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="578" y="283"/>
+        </scene>
+        <!--Add Parking View Controller - Sledovat další-->
+        <scene sceneID="jpj-8X-UPm">
+            <objects>
+                <tableViewController id="7Wc-nG-zeH" customClass="AddParkingViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="tUT-hO-OEj">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="dCI-Lm-GB8">
+                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dCI-Lm-GB8" id="ceg-Hr-yRc">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="7Wc-nG-zeH" id="Zvy-cM-JSR"/>
+                            <outlet property="delegate" destination="7Wc-nG-zeH" id="DBr-8x-jYG"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Sledovat další" id="Etb-0b-dZq"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="q3r-Bt-KLl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1065" y="720"/>
+        </scene>
+        <!--Parking Detail View Controller - Detail parkoviště-->
+        <scene sceneID="Bvt-No-t0W">
+            <objects>
+                <viewController id="Vpc-6k-Fv8" customClass="ParkingDetailViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="d9W-6A-eTy"/>
+                        <viewControllerLayoutGuide type="bottom" id="laz-f8-Jh2"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="6lg-hT-rYv">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Detail parkoviště" id="HME-1t-kaK"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sVy-EG-CpS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1061" y="26"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="j55-KU-En1">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="Osu-Et-Pzh" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="h97-EF-cF8">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="DW6-8e-30L" kind="relationship" relationship="rootViewController" id="6WN-xA-iDr"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8do-FP-rzk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="18" y="-1"/>
+        </scene>
+    </scenes>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+</document>
