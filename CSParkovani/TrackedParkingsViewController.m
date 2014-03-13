@@ -15,7 +15,9 @@
 
 @end
 
-@implementation TrackedParkingsViewController
+@implementation TrackedParkingsViewController {
+    UIRefreshControl *refresher;
+}
 
 @synthesize trackedParkingTable;
 
@@ -28,6 +30,14 @@
     return self;
 }
 
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -37,7 +47,11 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    
+
+    refresher = [[UIRefreshControl alloc] init];
+    [refresher addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
+    self.refreshControl = refresher;
+
     // Getting parkings here
     // TODO: this has to be cleaned
     
@@ -45,35 +59,34 @@
         [Parking updateTrackedParkings];
     } else {
         [Parking parkings:^(NSArray *parkings) {
-            NSLog(@"%d parkings loaded", [Parking parkingsDictionary].allValues.count);
             [Parking setDelegateForAllParkings:self];
             [Parking trackParkingWithParkingId:@5 objectId:@15];
             [Parking trackParkingWithParkingId:@3 objectId:@6];
             [Parking updateAllStatuses];
         }         onError:^(NSError *error) {
-            NSLog(@"Chybova hlaska je: %@", error.description);
+            NSLog(@"Error: %@", error.description);
         }];
     }
     
 }
 
+-(void) refresh {
+    NSLog(@"refreshing ...");
+    [Parking updateTrackedParkings];
+}
+
 #pragma mark - Parking protocol methods
 
 - (void)didUpdatedStatus:(Parking *)parking {
-    NSLog(@"parkoviste id: %@ v objektu: %@", parking.parkingId, parking.objectId);
-    NSLog(@"jmeno objektu: %@", parking.parkingObject.name);
-    NSLog(@"totalParkings: %@", parking.status.limitTotal);
+    // Add logic (if any) for particular parking status update
 }
 
 - (void)didUpdatedStatusesForAllParkings {
     NSLog(@"Did updated all statuses in dictionary, now reloading table");
+    if (self.refreshControl.refreshing) {
+        [refresher endRefreshing];
+    }
     [trackedParkingTable reloadData];
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - Table view data source
@@ -98,7 +111,10 @@
         cell = [[ParkingMasterTableCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"ParkingMasterTableCell"];
     }
 
-    cell.textLabel.text = ((Parking *)[[Parking trackedParkingsDictionary].allValues objectAtIndex:indexPath.row]).truncatedName;
+    cell.parkingType.text = ((Parking *)[[Parking trackedParkingsDictionary].allValues objectAtIndex:indexPath.row]).truncatedName;
+    cell.location.text = ((Parking *)[[Parking trackedParkingsDictionary].allValues objectAtIndex:indexPath.row]).parkingObject.name;
+    cell.freePlaces.text = ((Parking *)[[Parking trackedParkingsDictionary].allValues objectAtIndex:indexPath.row]).status.freePlaces.description;
+
 //    cell.nameLabel.text = ((Parking *)[[Parking trackedParkingsDictionary].allValues objectAtIndex:indexPath.row]).status.limitTotal.description;
 //    cell.gameLabel.text = ((Parking *)[[Parking trackedParkingsDictionary].allValues objectAtIndex:indexPath.row]).status.presentTotal.description;
     

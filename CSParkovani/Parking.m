@@ -26,6 +26,7 @@ static BOOL updatingMultipleStatuses;
 }
 
 
+
 + (void)setDelegateForAllParkings:(id)newDelegate {
     for (NSArray *key in parkingsDictionary.allKeys) {
         Parking *parking = [parkingsDictionary objectForKey:key];
@@ -52,6 +53,11 @@ static BOOL updatingMultipleStatuses;
     [trackedParkingsDictionary setObject:[parkingsDictionary objectForKey:@[objectId,parkingId]]
                                   forKey:@[objectId,parkingId]];
 }
+
++ (void)untrackParkingWithParkingId:(NSNumber *)parkingId objectId:(NSNumber *)objectId {
+    [trackedParkingsDictionary removeObjectForKey:@[objectId,parkingId]];
+}
+
 
 + (void)updateTrackedParkings {
     NSLog(@"Update of tracked statuses has been invoked");

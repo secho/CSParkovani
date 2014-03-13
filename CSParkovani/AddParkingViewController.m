@@ -12,6 +12,8 @@
 
 @interface AddParkingViewController ()
 
+- (void)addParking:(id)sender indexPath:(NSIndexPath *)indexPath;
+
 @end
 
 @implementation AddParkingViewController {
@@ -68,9 +70,31 @@
         cell = [[AddParkingTableCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"AddParkingTableCell"];
     }
 
-    cell.textLabel.text = ((Parking *)[[Parking parkingsDictionary].allValues objectAtIndex:indexPath.row]).truncatedName;
-    
+    cell.parkingType.text = ((Parking *)[[Parking parkingsDictionary].allValues objectAtIndex:indexPath.row]).truncatedName;
+    cell.location.text = ((Parking *)[[Parking parkingsDictionary].allValues objectAtIndex:indexPath.row]).parkingObject.name;
+    cell.isSelected.on = [[Parking trackedParkingsDictionary].allValues
+            containsObject:((Parking *)[[Parking parkingsDictionary].allValues objectAtIndex:indexPath.row])];
+    cell.isSelected.accessibilityIdentifier = [NSString stringWithFormat:@"%i",indexPath.row];
+    [cell.isSelected addTarget:self action:@selector(trackParking:)  forControlEvents:UIControlEventValueChanged];
     return cell;
+}
+
+- (void) trackParking:(id)sender{
+    UISwitch *uiSwitch = sender;
+    NSLog( @"The switch is %@", uiSwitch.on ? @"ON" : @"OFF" );
+    NSLog(@"row: %@", uiSwitch.accessibilityIdentifier);
+
+    NSNumber *row = @([uiSwitch.accessibilityIdentifier intValue]);
+
+
+    if (uiSwitch.on) {
+        [Parking trackParkingWithParkingId:((Parking *)[[Parking parkingsDictionary].allValues objectAtIndex:row.integerValue]).parkingId
+                                    objectId:((Parking *)[[Parking parkingsDictionary].allValues objectAtIndex:row.integerValue]).objectId];
+    } else {
+        [Parking untrackParkingWithParkingId:((Parking *)[[Parking parkingsDictionary].allValues objectAtIndex:row.integerValue]).parkingId
+                                    objectId:((Parking *)[[Parking parkingsDictionary].allValues objectAtIndex:row.integerValue]).objectId];
+    }
+
 }
 
 /*

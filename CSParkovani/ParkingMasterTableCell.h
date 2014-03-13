@@ -9,5 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface ParkingMasterTableCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UILabel *location;
+@property (weak, nonatomic) IBOutlet UILabel *parkingType;
+@property (weak, nonatomic) IBOutlet UILabel *freePlaces;
+@property (weak, nonatomic) IBOutlet UILabel *timeToFull;
 
 @end

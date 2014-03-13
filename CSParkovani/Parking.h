@@ -27,6 +27,7 @@
  */
 - (NSString *)truncatedName;
 
+
 /**
  * Invokes status update of the Parking instance.
  */
@@ -62,6 +63,12 @@
  * Add parking object into trackedParkingsDictionary.
  */
 + (void)trackParkingWithParkingId:(NSNumber *)parkingId objectId:(NSNumber *)objectId;
+
+/**
+* Remove parking object from trackedParkingsDictionary.
+*/
++ (void)untrackParkingWithParkingId:(NSNumber *)parkingId objectId:(NSNumber *)objectId;
+
 
 /**
  * Update chosen properties of all parking objects within trackedParkingsDictionary
