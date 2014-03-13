@@ -3,12 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="0838b89f-fb06-4836-91bb-811eb12062ac" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CSParkovani.xcworkspace/xcuserdata/secho.xcuserdatad/UserInterfaceState.xcuserstate" afterPath="$PROJECT_DIR$/CSParkovani.xcworkspace/xcuserdata/secho.xcuserdatad/UserInterfaceState.xcuserstate" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CSParkovani/AddParkingViewController.m" afterPath="$PROJECT_DIR$/CSParkovani/AddParkingViewController.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CSParkovani/Parking.h" afterPath="$PROJECT_DIR$/CSParkovani/Parking.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CSParkovani/Parking.m" afterPath="$PROJECT_DIR$/CSParkovani/Parking.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CSParkovani/ParkingDetailViewController.h" afterPath="$PROJECT_DIR$/CSParkovani/ParkingDetailViewController.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CSParkovani/ParkingDetailViewController.m" afterPath="$PROJECT_DIR$/CSParkovani/ParkingDetailViewController.m" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CSParkovani/ParkingMasterTableCell.h" afterPath="$PROJECT_DIR$/CSParkovani/ParkingMasterTableCell.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CSParkovani/ParkingStatus.h" afterPath="$PROJECT_DIR$/CSParkovani/ParkingStatus.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CSParkovani/ParkingStatus.m" afterPath="$PROJECT_DIR$/CSParkovani/ParkingStatus.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CSParkovani/ParkingMasterTableCell.m" afterPath="$PROJECT_DIR$/CSParkovani/ParkingMasterTableCell.m" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CSParkovani/Storyboard.storyboard" afterPath="$PROJECT_DIR$/CSParkovani/Storyboard.storyboard" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CSParkovani/TrackedParkingsViewController.m" afterPath="$PROJECT_DIR$/CSParkovani/TrackedParkingsViewController.m" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
@@ -34,10 +32,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
+      <file leaf-file-name="ParkingDetailViewController.h" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/CSParkovani/ParkingDetailViewController.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="9" column="18" selection-start="193" selection-end="193" vertical-scroll-proportion="0.22537562" vertical-offset="0" max-vertical-offset="599">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="TrackedParkingsViewController.m" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/CSParkovani/TrackedParkingsViewController.m">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="114" column="133" selection-start="3020" selection-end="3281" vertical-scroll-proportion="0.0" vertical-offset="1710" max-vertical-offset="2730">
+            <state line="174" column="56" selection-start="5592" selection-end="5592" vertical-scroll-proportion="0.0" vertical-offset="1944" max-vertical-offset="2850">
               <folding />
             </state>
           </provider>
@@ -46,7 +53,7 @@
       <file leaf-file-name="Parking.h" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/CSParkovani/Parking.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="69" column="15" selection-start="1829" selection-end="1829" vertical-scroll-proportion="0.0" vertical-offset="526" max-vertical-offset="1425">
+            <state line="69" column="15" selection-start="1829" selection-end="1829" vertical-scroll-proportion="0.0" vertical-offset="826" max-vertical-offset="1425">
               <folding />
             </state>
           </provider>
@@ -64,7 +71,7 @@
       <file leaf-file-name="ParkingDetailViewController.m" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/CSParkovani/ParkingDetailViewController.m">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="660">
+            <state line="16" column="20" selection-start="306" selection-end="306" vertical-scroll-proportion="0.0" vertical-offset="46" max-vertical-offset="690">
               <folding />
             </state>
           </provider>
@@ -82,7 +89,7 @@
       <file leaf-file-name="Parking.m" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/CSParkovani/Parking.m">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="57" column="70" selection-start="1485" selection-end="1485" vertical-scroll-proportion="0.0" vertical-offset="375" max-vertical-offset="2460">
+            <state line="57" column="70" selection-start="1485" selection-end="1485" vertical-scroll-proportion="0.0" vertical-offset="1245" max-vertical-offset="2460">
               <folding />
             </state>
           </provider>
@@ -97,19 +104,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AddParkingTableCell.m" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/CSParkovani/AddParkingTableCell.m">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="27" column="0" selection-start="617" selection-end="617" vertical-scroll-proportion="0.0" vertical-offset="405" max-vertical-offset="525">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AddParkingViewController.m" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="AddParkingViewController.m" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/CSParkovani/AddParkingViewController.m">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="71" column="0" selection-start="1813" selection-end="1813" vertical-scroll-proportion="0.6327212" vertical-offset="686" max-vertical-offset="2355">
+            <state line="80" column="0" selection-start="2478" selection-end="2478" vertical-scroll-proportion="0.0" vertical-offset="686" max-vertical-offset="2355">
               <folding>
                 <element signature="e#148#184#0" expanded="true" />
               </folding>
@@ -120,7 +118,7 @@
       <file leaf-file-name="TrackedParkingsViewController.h" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/CSParkovani/TrackedParkingsViewController.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="345">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="330">
               <folding />
             </state>
           </provider>
@@ -148,10 +146,12 @@
         <option value="$PROJECT_DIR$/CSParkovani/AddParkingTableCell.m" />
         <option value="$PROJECT_DIR$/CSParkovani/ParkingStatus.h" />
         <option value="$PROJECT_DIR$/CSParkovani/ParkingStatus.m" />
-        <option value="$PROJECT_DIR$/CSParkovani/TrackedParkingsViewController.m" />
         <option value="$PROJECT_DIR$/CSParkovani/Parking.h" />
         <option value="$PROJECT_DIR$/CSParkovani/Parking.m" />
         <option value="$PROJECT_DIR$/CSParkovani/AddParkingViewController.m" />
+        <option value="$PROJECT_DIR$/CSParkovani/ParkingDetailViewController.m" />
+        <option value="$PROJECT_DIR$/CSParkovani/TrackedParkingsViewController.m" />
+        <option value="$PROJECT_DIR$/CSParkovani/ParkingDetailViewController.h" />
       </list>
     </option>
   </component>
@@ -377,7 +377,11 @@
       <created>1394638423296</created>
       <updated>1394638423296</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Added add/remove from tracking feature, prototyped UITableCells.">
+      <created>1394670837369</created>
+      <updated>1394670837369</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -412,19 +416,13 @@
     </option>
     <MESSAGE value="Minor changes" />
     <MESSAGE value="Added view for addparkings" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added view for addparkings" />
+    <MESSAGE value="Added add/remove from tracking feature, prototyped UITableCells." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added add/remove from tracking feature, prototyped UITableCells." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/CSParkovani/AddParkingTableCell.m">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="0" selection-start="617" selection-end="617" vertical-scroll-proportion="0.0" vertical-offset="405" max-vertical-offset="525">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/CSParkovani/AddParkingViewController.m">
       <provider selected="true" editor-type-id="text-editor">
         <state line="79" column="1" selection-start="2180" selection-end="2180" vertical-scroll-proportion="0.0" vertical-offset="660" max-vertical-offset="2010">
@@ -457,7 +455,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/CSParkovani/ParkingMasterTableCell.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="0" selection-start="51" selection-end="51" vertical-scroll-proportion="0.0" vertical-offset="60" max-vertical-offset="345" />
+        <state line="4" column="0" selection-start="51" selection-end="51" vertical-scroll-proportion="0.0" vertical-offset="60" max-vertical-offset="345">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/CSParkovani/AddParkingViewController.h">
@@ -481,13 +481,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CSParkovani/ParkingDetailViewController.m">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="660">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/CSParkovani/AddParkingTableCell.m">
       <provider selected="true" editor-type-id="text-editor">
         <state line="27" column="0" selection-start="617" selection-end="617" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="525">
@@ -495,9 +488,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CSParkovani/TrackedParkingsViewController.m">
+    <entry file="file://$PROJECT_DIR$/CSParkovani/AddParkingViewController.m">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="114" column="133" selection-start="3020" selection-end="3281" vertical-scroll-proportion="0.0" vertical-offset="1262" max-vertical-offset="2685">
+        <state line="80" column="0" selection-start="2478" selection-end="2478" vertical-scroll-proportion="0.0" vertical-offset="686" max-vertical-offset="2355">
+          <folding>
+            <element signature="e#148#184#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CSParkovani/Parking.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="57" column="70" selection-start="1485" selection-end="1485" vertical-scroll-proportion="0.0" vertical-offset="375" max-vertical-offset="2460">
           <folding />
         </state>
       </provider>
@@ -511,24 +513,29 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/CSParkovani/Parking.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="69" column="15" selection-start="1829" selection-end="1829" vertical-scroll-proportion="0.0" vertical-offset="526" max-vertical-offset="1425">
+        <state line="69" column="15" selection-start="1829" selection-end="1829" vertical-scroll-proportion="0.0" vertical-offset="826" max-vertical-offset="1425">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CSParkovani/Parking.m">
+    <entry file="file://$PROJECT_DIR$/CSParkovani/TrackedParkingsViewController.m">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="57" column="70" selection-start="1485" selection-end="1485" vertical-scroll-proportion="0.0" vertical-offset="375" max-vertical-offset="2460">
+        <state line="174" column="56" selection-start="5592" selection-end="5592" vertical-scroll-proportion="0.0" vertical-offset="1944" max-vertical-offset="2850">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CSParkovani/AddParkingViewController.m">
+    <entry file="file://$PROJECT_DIR$/CSParkovani/ParkingDetailViewController.m">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="71" column="0" selection-start="1813" selection-end="1813" vertical-scroll-proportion="0.6327212" vertical-offset="686" max-vertical-offset="2355">
-          <folding>
-            <element signature="e#148#184#0" expanded="true" />
-          </folding>
+        <state line="16" column="20" selection-start="306" selection-end="306" vertical-scroll-proportion="0.0" vertical-offset="91" max-vertical-offset="690">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CSParkovani/ParkingDetailViewController.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="18" selection-start="193" selection-end="193" vertical-scroll-proportion="0.22537562" vertical-offset="0" max-vertical-offset="599">
+          <folding />
         </state>
       </provider>
     </entry>

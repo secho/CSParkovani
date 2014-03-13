@@ -14,4 +14,5 @@
 @property (weak, nonatomic) IBOutlet UILabel *freePlaces;
 @property (weak, nonatomic) IBOutlet UILabel *timeToFull;
 
+
 @end

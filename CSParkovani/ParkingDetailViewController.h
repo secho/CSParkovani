@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Parking.h"
 
 @interface ParkingDetailViewController : UIViewController
+
+@property (nonatomic, strong) Parking *parking;
+
+
 
 @end
