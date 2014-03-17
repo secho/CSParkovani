@@ -10,6 +10,8 @@
 #import "NSDate+Tools.h"
 #import "LocationService.h"
 
+#define USER_TRACKED_PARKINGS_KEY @"userTrackedParkings"
+
 static NSMutableDictionary *parkingsDictionary;
 static NSMutableDictionary *trackedParkingsDictionary;
 static int countOfupdatedParkings;
@@ -130,6 +132,37 @@ static BOOL updatingMultipleStatuses;
     [trackedParkingsDictionary removeObjectForKey:@[objectId, parkingId]];
 }
 
++ (void)loadTrackedParkings
+{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSArray *trackedParkings = [userDefaults valueForKey:USER_TRACKED_PARKINGS_KEY];
+    
+    for (NSArray *trackedParking in trackedParkings)
+    {
+        if (trackedParking.count >= 2)
+        {
+            [self trackParkingWithParkingId:trackedParking[1] objectId:trackedParking[0]];
+        }
+    }
+    
+    //fill default parkings if wanted
+    if (!trackedParkings)
+    {
+        [self trackParkingWithParkingId:@5 objectId:@15];
+        [self trackParkingWithParkingId:@3 objectId:@6];
+        [self saveTrackedParkings];
+    }
+}
+
++ (void)saveTrackedParkings
+{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    
+    NSArray *trackedParkings = trackedParkingsDictionary.allKeys;
+    
+    [userDefaults setValue:trackedParkings forKey:USER_TRACKED_PARKINGS_KEY];
+    [userDefaults synchronize];
+}
 
 + (void)updateTrackedParkings
 {
@@ -144,7 +177,6 @@ static BOOL updatingMultipleStatuses;
         [parking updatePrediction];
     }
 }
-
 
 - (void)updateStatus
 {

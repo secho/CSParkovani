@@ -8,6 +8,7 @@
 
 #import "ParkingDetailViewController.h"
 #import "NSDate+Tools.h"
+#import <MapKit/MapKit.h>
 
 #define HISTORY_SWITCH_ANIMATION_DURATION .3
 #define CONTENT_SIZE 568.
@@ -185,6 +186,18 @@ typedef enum {
 - (void)nextWeekButtonClicked:(id)sender
 {
     [self showHistoryForNextWeek];
+}
+
+- (void)navigateButtonClicked:(id)sender
+{
+    CLLocationCoordinate2D targetLocation = CLLocationCoordinate2DMake(self.parking.parkingObject.latitude.floatValue, self.parking.parkingObject.longitude.floatValue);
+    MKPlacemark *endLocation = [[MKPlacemark alloc] initWithCoordinate:targetLocation addressDictionary:nil];
+    
+    NSMutableDictionary *launchOptions = [[NSMutableDictionary alloc] init];
+    [launchOptions setObject:MKLaunchOptionsDirectionsModeDriving forKey:MKLaunchOptionsDirectionsModeKey];
+    MKMapItem *endItem = [[MKMapItem alloc] initWithPlacemark:endLocation];
+    
+    [endItem openInMapsWithLaunchOptions:launchOptions];
 }
 
 @end

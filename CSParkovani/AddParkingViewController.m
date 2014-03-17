@@ -79,7 +79,8 @@
     return cell;
 }
 
-- (void) trackParking:(id)sender{
+- (void)trackParking:(id)sender
+{
     UISwitch *uiSwitch = sender;
     NSLog( @"The switch is %@", uiSwitch.on ? @"ON" : @"OFF" );
     NSLog(@"row: %@", uiSwitch.accessibilityIdentifier);
@@ -87,14 +88,18 @@
     NSNumber *row = @([uiSwitch.accessibilityIdentifier intValue]);
 
 
-    if (uiSwitch.on) {
+    if (uiSwitch.on)
+    {
         [Parking trackParkingWithParkingId:((Parking *)[[Parking parkingsDictionary].allValues objectAtIndex:row.integerValue]).parkingId
-                                    objectId:((Parking *)[[Parking parkingsDictionary].allValues objectAtIndex:row.integerValue]).objectId];
-    } else {
+                                  objectId:((Parking *)[[Parking parkingsDictionary].allValues objectAtIndex:row.integerValue]).objectId];
+    }
+    else
+    {
         [Parking untrackParkingWithParkingId:((Parking *)[[Parking parkingsDictionary].allValues objectAtIndex:row.integerValue]).parkingId
                                     objectId:((Parking *)[[Parking parkingsDictionary].allValues objectAtIndex:row.integerValue]).objectId];
     }
-
+    
+    [Parking saveTrackedParkings];
 }
 
 /*

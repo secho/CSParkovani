@@ -74,8 +74,7 @@
         [Parking parkings:^(NSArray *parkings) {
             
             [Parking setDelegateForAllParkings:self];
-            [Parking trackParkingWithParkingId:@5 objectId:@15];
-            [Parking trackParkingWithParkingId:@3 objectId:@6];
+            [Parking loadTrackedParkings];
             [Parking updateAllStatuses];
             [Parking updateTrackedParkingsPredictions];
             
@@ -90,11 +89,12 @@
     [NSTimer scheduledTimerWithTimeInterval:TIMER_UPDATE target:self selector:@selector(refresh) userInfo:nil repeats:YES];
 }
 
-- (void)viewDidAppear:(BOOL)animated
+- (void)viewWillAppear:(BOOL)animated
 {
-    [super viewDidAppear:animated];
+    [super viewWillAppear:animated];
     
     [trackedParkingTable reloadData];
+    [Parking updateTrackedParkingsPredictions];
 }
 
 - (void)refresh

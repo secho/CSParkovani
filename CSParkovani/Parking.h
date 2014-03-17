@@ -82,6 +82,16 @@
 + (void)untrackParkingWithParkingId:(NSNumber *)parkingId objectId:(NSNumber *)objectId;
 
 /**
+ * Load tracked parking from user defaults.
+ */
++ (void)loadTrackedParkings;
+
+/**
+ * Save tracked parking to user defaults.
+ */
++ (void)saveTrackedParkings;
+
+/**
  * Update chosen properties of all parking objects within trackedParkingsDictionary
  */
 + (void)updateTrackedParkings;

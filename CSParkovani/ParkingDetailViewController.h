@@ -28,5 +28,6 @@
 
 - (IBAction)prevWeekButtonClicked:(id)sender;
 - (IBAction)nextWeekButtonClicked:(id)sender;
+- (IBAction)navigateButtonClicked:(id)sender;
 
 @end
