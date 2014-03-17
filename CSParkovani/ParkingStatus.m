@@ -11,13 +11,6 @@
 
 @implementation ParkingStatus
 
-- (NSNumber *)freePlaces {
-    NSInteger free;
-    free = _limitTotal.integerValue - _presentTotal.integerValue;
-    return [NSNumber numberWithInteger:free];
-}
-
-
 + (RKMapping *)mapping {
     RKObjectMapping *statusMapping = [RKObjectMapping mappingForClass:[ParkingStatus class]];
     [statusMapping addAttributeMappingsFromDictionary:@{
@@ -80,6 +73,13 @@
      ];
 }
 
+- (NSNumber *)freePlaces
+{
+    NSInteger free;
+    free = _limitTotal.integerValue - _presentTotal.integerValue;
+    
+    return [NSNumber numberWithInteger:free];
+}
 
 @end
 

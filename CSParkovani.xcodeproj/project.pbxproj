@@ -21,6 +21,10 @@
 		683F9D0FE2912D2FC98E33B7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 683F9F1321FC9F6137CA2A20 /* AppDelegate.m */; };
 		683F9F77565DAD21B83F2582 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 683F91E43DACA421CC779AE1 /* main.m */; };
 		683F9FDB63EDB0DD25EF968E /* CSParkovaniTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 683F99D681BED588DA03B2C1 /* CSParkovaniTests.m */; };
+		7742A5B818D3452C00692B7F /* ParkingStatistics.m in Sources */ = {isa = PBXBuildFile; fileRef = 7742A5B718D3452C00692B7F /* ParkingStatistics.m */; };
+		7742A5BC18D359FA00692B7F /* NSDate+Tools.m in Sources */ = {isa = PBXBuildFile; fileRef = 7742A5BB18D359FA00692B7F /* NSDate+Tools.m */; };
+		7742A5BF18D3650B00692B7F /* HistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7742A5BE18D3650B00692B7F /* HistoryViewController.m */; };
+		7742A5C218D601E900692B7F /* ChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7742A5C118D601E900692B7F /* ChartView.m */; };
 		F993AC9718CFCFB00088E6D2 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F993AC9618CFCFB00088E6D2 /* Storyboard.storyboard */; };
 		F993AC9A18CFD0760088E6D2 /* TrackedParkingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F993AC9918CFD0760088E6D2 /* TrackedParkingsViewController.m */; };
 		F993AC9D18CFD09D0088E6D2 /* ParkingDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F993AC9C18CFD09D0088E6D2 /* ParkingDetailViewController.m */; };
@@ -62,6 +66,14 @@
 		683F9EB83C3276913E32E9BC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		683F9EE32F8F708F41DE8676 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		683F9F1321FC9F6137CA2A20 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		7742A5B618D3452C00692B7F /* ParkingStatistics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParkingStatistics.h; sourceTree = "<group>"; };
+		7742A5B718D3452C00692B7F /* ParkingStatistics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParkingStatistics.m; sourceTree = "<group>"; };
+		7742A5BA18D359FA00692B7F /* NSDate+Tools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Tools.h"; sourceTree = "<group>"; };
+		7742A5BB18D359FA00692B7F /* NSDate+Tools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Tools.m"; sourceTree = "<group>"; };
+		7742A5BD18D3650B00692B7F /* HistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryViewController.h; sourceTree = "<group>"; };
+		7742A5BE18D3650B00692B7F /* HistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryViewController.m; sourceTree = "<group>"; };
+		7742A5C018D601E900692B7F /* ChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChartView.h; sourceTree = "<group>"; };
+		7742A5C118D601E900692B7F /* ChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChartView.m; sourceTree = "<group>"; };
 		CA6FD23EFE314042A9A9812C /* libPods-CSParkovani.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CSParkovani.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F993AC9618CFCFB00088E6D2 /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 		F993AC9818CFD0760088E6D2 /* TrackedParkingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrackedParkingsViewController.h; sourceTree = "<group>"; };
@@ -172,6 +184,7 @@
 		683F9FC000FEBADED2A25B19 /* CSParkovani */ = {
 			isa = PBXGroup;
 			children = (
+				7742A5B918D359C400692B7F /* Extensions */,
 				F993AC9518CFCE720088E6D2 /* View */,
 				F993AC9418CFCE690088E6D2 /* Model */,
 				683F9DA9D04C8856DF74D8E5 /* Supporting Files */,
@@ -183,16 +196,27 @@
 			path = CSParkovani;
 			sourceTree = "<group>";
 		};
+		7742A5B918D359C400692B7F /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				7742A5BA18D359FA00692B7F /* NSDate+Tools.h */,
+				7742A5BB18D359FA00692B7F /* NSDate+Tools.m */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
 		F993AC9418CFCE690088E6D2 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				F993ACA118CFD1480088E6D2 /* Parking.h */,
 				F993ACA218CFD1480088E6D2 /* Parking.m */,
+				F993ACAA18CFD1BF0088E6D2 /* ParkingDelegate.h */,
 				F993ACA418CFD15D0088E6D2 /* ParkingObject.h */,
 				F993ACA518CFD15D0088E6D2 /* ParkingObject.m */,
+				7742A5B618D3452C00692B7F /* ParkingStatistics.h */,
+				7742A5B718D3452C00692B7F /* ParkingStatistics.m */,
 				F993ACA718CFD1740088E6D2 /* ParkingStatus.h */,
 				F993ACA818CFD1740088E6D2 /* ParkingStatus.m */,
-				F993ACAA18CFD1BF0088E6D2 /* ParkingDelegate.h */,
 				F993ACAB18CFD1D90088E6D2 /* PredictionValue.h */,
 				F993ACAC18CFD1D90088E6D2 /* PredictionValue.m */,
 			);
@@ -202,16 +226,20 @@
 		F993AC9518CFCE720088E6D2 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				F993AC9818CFD0760088E6D2 /* TrackedParkingsViewController.h */,
-				F993AC9918CFD0760088E6D2 /* TrackedParkingsViewController.m */,
-				F993AC9B18CFD09D0088E6D2 /* ParkingDetailViewController.h */,
-				F993AC9C18CFD09D0088E6D2 /* ParkingDetailViewController.m */,
-				F993AC9E18CFD0C30088E6D2 /* AddParkingViewController.h */,
-				F993AC9F18CFD0C30088E6D2 /* AddParkingViewController.m */,
-				F993ACAE18CFD3190088E6D2 /* ParkingMasterTableCell.h */,
-				F993ACAF18CFD3190088E6D2 /* ParkingMasterTableCell.m */,
 				683F92D3A07CBBC01EE1A2C6 /* AddParkingTableCell.h */,
 				683F9C165F06815D76B9695D /* AddParkingTableCell.m */,
+				F993AC9E18CFD0C30088E6D2 /* AddParkingViewController.h */,
+				F993AC9F18CFD0C30088E6D2 /* AddParkingViewController.m */,
+				7742A5BD18D3650B00692B7F /* HistoryViewController.h */,
+				7742A5BE18D3650B00692B7F /* HistoryViewController.m */,
+				7742A5C018D601E900692B7F /* ChartView.h */,
+				7742A5C118D601E900692B7F /* ChartView.m */,
+				F993AC9B18CFD09D0088E6D2 /* ParkingDetailViewController.h */,
+				F993AC9C18CFD09D0088E6D2 /* ParkingDetailViewController.m */,
+				F993ACAE18CFD3190088E6D2 /* ParkingMasterTableCell.h */,
+				F993ACAF18CFD3190088E6D2 /* ParkingMasterTableCell.m */,
+				F993AC9818CFD0760088E6D2 /* TrackedParkingsViewController.h */,
+				F993AC9918CFD0760088E6D2 /* TrackedParkingsViewController.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -265,7 +293,7 @@
 				ORGANIZATIONNAME = csas;
 				TargetAttributes = {
 					683F909727B003A5384318AC = {
-						DevelopmentTeam = BA9C8TYC7C;
+						DevelopmentTeam = 46G3V224MT;
 					};
 				};
 			};
@@ -347,15 +375,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				F993ACA318CFD1480088E6D2 /* Parking.m in Sources */,
+				7742A5B818D3452C00692B7F /* ParkingStatistics.m in Sources */,
+				7742A5C218D601E900692B7F /* ChartView.m in Sources */,
 				F993ACA618CFD15D0088E6D2 /* ParkingObject.m in Sources */,
 				F993ACA918CFD1740088E6D2 /* ParkingStatus.m in Sources */,
 				F993ACB018CFD3190088E6D2 /* ParkingMasterTableCell.m in Sources */,
 				683F9F77565DAD21B83F2582 /* main.m in Sources */,
 				683F9D0FE2912D2FC98E33B7 /* AppDelegate.m in Sources */,
+				7742A5BF18D3650B00692B7F /* HistoryViewController.m in Sources */,
 				F993ACA018CFD0C30088E6D2 /* AddParkingViewController.m in Sources */,
 				F993AC9D18CFD09D0088E6D2 /* ParkingDetailViewController.m in Sources */,
 				F993AC9A18CFD0760088E6D2 /* TrackedParkingsViewController.m in Sources */,
 				F993ACAD18CFD1D90088E6D2 /* PredictionValue.m in Sources */,
+				7742A5BC18D359FA00692B7F /* NSDate+Tools.m in Sources */,
 				683F984258EF7D607176A6E3 /* AddParkingTableCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

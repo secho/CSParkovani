@@ -55,7 +55,8 @@
 
 }
 
-- (void)initObjectManager {
+- (void)initObjectManager
+{
     RKObjectManager *manager = [RKObjectManager managerWithBaseURL:[NSURL URLWithString:@"https://www.csast.csas.cz/ie_mbe/rest/v1/parking/"]];
     [manager setAcceptHeaderWithMIMEType:@"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8"];
 }

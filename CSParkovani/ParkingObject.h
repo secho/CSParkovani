@@ -11,7 +11,6 @@
 
 @interface ParkingObject : NSObject
 
-
 @property(nonatomic, copy) NSNumber *objectId;
 @property(nonatomic, copy) NSString *name;
 @property(nonatomic, copy) NSString *addressLine1;
@@ -23,6 +22,6 @@
 @property(nonatomic, copy) NSNumber *latitude;
 @property(nonatomic, copy) NSNumber *longitude;
 
-+ (RKMapping *) mapping;
++ (RKMapping *)mapping;
 
 @end

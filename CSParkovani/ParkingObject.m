@@ -13,8 +13,8 @@
     
 }
 
-
-+ (RKObjectMapping *) mapping {
++ (RKObjectMapping *)mapping
+{
     RKObjectMapping *objectMapping = [RKObjectMapping mappingForClass:[ParkingObject class]];
     
     [objectMapping addAttributeMappingsFromDictionary:@{

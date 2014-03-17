@@ -7,7 +7,7 @@
 //
 
 #import "Parking.h"
-
+#import "NSDate+Tools.h"
 
 static NSMutableDictionary *parkingsDictionary;
 static NSMutableDictionary *trackedParkingsDictionary;
@@ -20,107 +20,170 @@ static BOOL updatingMultipleStatuses;
 @synthesize delegate;
 @synthesize name;
 
-- (NSString *)truncatedName {
+- (NSString *)truncatedName
+{
     NSArray *splits = [name componentsSeparatedByString:@"- "];
-    return splits[splits.count-1];
+    return splits[splits.count - 1];
 }
 
-
-
-+ (void)setDelegateForAllParkings:(id)newDelegate {
-    for (NSArray *key in parkingsDictionary.allKeys) {
++ (void)setDelegateForAllParkings:(id)newDelegate
+{
+    for (NSArray *key in parkingsDictionary.allKeys)
+    {
         Parking *parking = [parkingsDictionary objectForKey:key];
         parking.delegate = newDelegate;
     }
 }
 
-- (void)updateHistory {
+- (void)asyncStatisticsForWeek:(NSDate *)firstDayDate completition:(void (^)(NSArray *statistics))result onError:(void (^)(NSError *error))error
+{
+    NSDate *fromDate = [firstDayDate midnightDate];
+    NSDate *toDate = [fromDate dateWithDayOffset:7];
+    
+    RKResponseDescriptor *responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:[ParkingStatistics mapping]
+                                                                                            method:RKRequestMethodAny
+                                                                                       pathPattern:nil
+                                                                                           keyPath:@""
+                                                                                       statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    
+    [[RKObjectManager sharedManager] addResponseDescriptor:responseDescriptor];
+    
+    [[RKObjectManager sharedManager] getObjectsAtPath:@"statistic/hourly"
+                                           parameters:@{ @"objectId":self.objectId,
+                                                         @"parkingId":self.parkingId,
+                                                         @"from":[fromDate toStringWithFormat:@"yyyy'-'MM'-'dd'T'HH':'mm':'ss"],
+                                                         @"to":[toDate toStringWithFormat:@"yyyy'-'MM'-'dd'T'HH':'mm':'ss"]
+                                                         }
+                                              success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                                                  
+                                                  NSLog(@"stats downloaded");
+                                                  result(mappingResult.array);
+                                                  
+                                              }
+                                              failure:^(RKObjectRequestOperation *operation, NSError *operationError) {
+                                                  
+                                                  NSLog(@"download statistics failure");
+                                                  error(operationError);
+                                                  
+                                              }];
+}
+
+- (void)updateHistory
+{
     
 }
 
-- (void)updatePrediction {
+- (void)updatePrediction
+{
     
 }
 
-+ (NSMutableDictionary *)trackedParkingsDictionary {
++ (NSMutableDictionary *)trackedParkingsDictionary
+{
     return trackedParkingsDictionary;
 }
 
-+ (void)trackParkingWithParkingId:(NSNumber *)parkingId objectId:(NSNumber *)objectId {
-    if (trackedParkingsDictionary == nil) {
-        trackedParkingsDictionary = [[NSMutableDictionary alloc] init];
++ (void)trackParkingWithParkingId:(NSNumber *)parkingId objectId:(NSNumber *)objectId
+{
+    if (trackedParkingsDictionary == nil)
+    {
+        trackedParkingsDictionary = [NSMutableDictionary dictionary];
     }
-    [trackedParkingsDictionary setObject:[parkingsDictionary objectForKey:@[objectId,parkingId]]
-                                  forKey:@[objectId,parkingId]];
+    
+    [trackedParkingsDictionary setObject:[parkingsDictionary objectForKey:@[objectId, parkingId]] forKey:@[objectId, parkingId]];
 }
 
-+ (void)untrackParkingWithParkingId:(NSNumber *)parkingId objectId:(NSNumber *)objectId {
-    [trackedParkingsDictionary removeObjectForKey:@[objectId,parkingId]];
++ (void)untrackParkingWithParkingId:(NSNumber *)parkingId objectId:(NSNumber *)objectId
+{
+    [trackedParkingsDictionary removeObjectForKey:@[objectId, parkingId]];
 }
 
 
-+ (void)updateTrackedParkings {
++ (void)updateTrackedParkings
+{
     NSLog(@"Update of tracked statuses has been invoked");
     updatingMultipleStatuses = YES;
     countOfParkingsForUpdate = trackedParkingsDictionary.allValues.count;
-    for (NSArray *key in trackedParkingsDictionary.allKeys) {
+    
+    for (NSArray *key in trackedParkingsDictionary.allKeys)
+    {
         Parking *parking = [trackedParkingsDictionary objectForKey:key];
         [parking updateStatus];
     }
 }
 
 
-- (void)updateStatus {
-    if(self.status == nil) {
+- (void)updateStatus
+{
+    if (self.status == nil)
+    {
         self.status =  [ParkingStatus initStatusWithParkingIdAndObjectId:self.parkingId objectId:self.objectId];
     }
+    
     [self.status updateStatus:^(ParkingStatus *parkingStatus) {
+        
         self.status = parkingStatus;
         [self didUpdatedStatus:self];
+        
     } onFault:^(NSError *error) {
+        
         NSLog(@"Update status failed!");
+        
     }];
 }
 
-+ (void)updateAllStatuses {
++ (void)updateAllStatuses
+{
     NSLog(@"Update of all statuses has been invoked");
     updatingMultipleStatuses = YES;
     countOfParkingsForUpdate = parkingsDictionary.allValues.count;
-    for (NSArray *key in parkingsDictionary.allKeys) {
+
+    for (NSArray *key in parkingsDictionary.allKeys)
+    {
         Parking *parking = [parkingsDictionary objectForKey:key];
         [parking updateStatus];
     }
 }
 
 
-+ (NSMutableDictionary *)parkingsDictionary {
++ (NSMutableDictionary *)parkingsDictionary
+{
     return parkingsDictionary;
 }
 
-- (void)didUpdatedStatus:(Parking *)parking {
+- (void)didUpdatedStatus:(Parking *)parking
+{
     [delegate didUpdatedStatus:self];
-    if (updatingMultipleStatuses) {
+
+    if (updatingMultipleStatuses)
+    {
         countOfupdatedParkings++;
-        if (countOfupdatedParkings == countOfParkingsForUpdate) {
+        
+        if (countOfupdatedParkings == countOfParkingsForUpdate)
+        {
             [self didUpdatedStatusesForAllParkings];
         }
     }
 }
 
-- (void)didUpdatedStatusesForAllParkings {
+- (void)didUpdatedStatusesForAllParkings
+{
     [delegate didUpdatedStatusesForAllParkings];
     updatingMultipleStatuses = NO;
     countOfupdatedParkings = 0;
 }
 
-+ (RKMapping *)mapping {
++ (RKMapping *)mapping
+{
     RKObjectMapping *parkingMapping = [RKObjectMapping mappingForClass:[Parking class]];
+
     [parkingMapping addAttributeMappingsFromDictionary:@{
                                                          @"objectId" : @"objectId",
                                                          @"parkingId" : @"parkingId",
                                                          @"name" : @"name",
                                                          @"enabled" : @"enabled"
                                                          }];
+    
     [parkingMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"parkingObject"
                                                                                    toKeyPath:@"parkingObject"
                                                                                  withMapping:[ParkingObject mapping]]];
@@ -130,29 +193,34 @@ static BOOL updatingMultipleStatuses;
 
 + (void)parkings:(void (^)(NSArray *parkings))result onError:(void (^)(NSError *error))error {
     
-    RKResponseDescriptor *responseDescriptor = [RKResponseDescriptor
-                                                responseDescriptorWithMapping:[Parking mapping]
-                                                method:RKRequestMethodAny
-                                                pathPattern:nil
-                                                keyPath:@""
-                                                statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    RKResponseDescriptor *responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:[Parking mapping]
+                                                                                            method:RKRequestMethodAny
+                                                                                       pathPattern:nil
+                                                                                           keyPath:@""
+                                                                                       statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     
     [[RKObjectManager sharedManager] addResponseDescriptor:responseDescriptor];
     
-    [[RKObjectManager sharedManager] getObjectsAtPath:@"places" parameters:nil
+    [[RKObjectManager sharedManager] getObjectsAtPath:@"places"
+                                           parameters:nil
                                               success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                                                  
                                                   parkingsDictionary = [[NSMutableDictionary alloc] init];
-                                                  for (Parking *parking in mappingResult.array) {
-                                                      [parkingsDictionary setObject:parking
-                                                                             forKey:@[parking.objectId,parking.parkingId]];
+                                                  
+                                                  for (Parking *parking in mappingResult.array)
+                                                  {
+                                                      [parkingsDictionary setObject:parking forKey:@[parking.objectId,parking.parkingId]];
                                                   }
+                                                  
                                                   result(mappingResult.array);
+                                                  
                                               }
                                               failure:^(RKObjectRequestOperation *operation, NSError *operationError) {
+
                                                   NSLog(@"fetch parkings failure");
                                                   error(operationError);
-                                              }
-     ];
+                                                  
+                                              }];
 }
 
 @end

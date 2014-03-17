@@ -11,6 +11,7 @@
 #import "ParkingObject.h"
 #import "ParkingStatus.h"
 #import "ParkingDelegate.h"
+#import "ParkingStatistics.h"
 
 @interface Parking : NSObject <ParkingDelegate>
 
@@ -27,37 +28,41 @@
  */
 - (NSString *)truncatedName;
 
-
 /**
  * Invokes status update of the Parking instance.
  */
-- (void) updateStatus;
+- (void)updateStatus;
 
 /**
  * Invokes history update of the Parking instance.
  */
-- (void) updateHistory;
+- (void)updateHistory;
+
+/**
+ * Get statistics objects from REST API.
+ */
+- (void)asyncStatisticsForWeek:(NSDate *)firstDayDate completition:(void (^)(NSArray *statistics))result onError:(void (^)(NSError *error))error;
 
 /**
  * Inovkes prediction update of the Parking instance.
  */
-- (void) updatePrediction;
+- (void)updatePrediction;
 
 /**
  * Get all parking objects from REST API. After response is returned fill parkingsDictionary and callback.
  */
-+ (void)parkings: (void (^)(NSArray *parkings))result onError:(void (^)(NSError *error))error;
++ (void)parkings:(void (^)(NSArray *parkings))result onError:(void (^)(NSError *error))error;
 
 /*
  Get dictionary of all parking objects where key is [objectId, parkingId]
  */
-+ (NSMutableDictionary *) parkingsDictionary;
++ (NSMutableDictionary *)parkingsDictionary;
 
 /**
  * Get dictionary of tracked parking objects. This dictionary contains parking objects selected for monitoring
  * and updating. Key is [objectId, parkingId]
  */
-+ (NSMutableDictionary *) trackedParkingsDictionary;
++ (NSMutableDictionary *)trackedParkingsDictionary;
 
 /**
  * Add parking object into trackedParkingsDictionary.
@@ -69,21 +74,20 @@
 */
 + (void)untrackParkingWithParkingId:(NSNumber *)parkingId objectId:(NSNumber *)objectId;
 
-
 /**
  * Update chosen properties of all parking objects within trackedParkingsDictionary
  */
-+ (void) updateTrackedParkings;
++ (void)updateTrackedParkings;
 
 /**
  * Update statuses of all parking objects within parkingsDictionary
  */
-+ (void) updateAllStatuses;
++ (void)updateAllStatuses;
 
 /**
  * Set delegate for all parking objects within parkingsDictionary. Should be called once right after callback.
  */
-+ (void) setDelegateForAllParkings:(id) newDelegate;
++ (void)setDelegateForAllParkings:(id)newDelegate;
 
 /**
  * RESTKit mapping for Parking object

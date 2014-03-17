@@ -21,8 +21,8 @@
 
 + (void)statuses:(void (^)(NSArray *statuses))result onError:(void (^)(NSError *error))error;
 + (RKMapping *)mapping;
-+ (instancetype) initStatusWithParkingIdAndObjectId:(NSNumber *)parkingId objectId:(NSNumber *)objectId;
-- (void) updateStatus:(void(^)(ParkingStatus *parkingStatus))result onFault:(void(^)(NSError *error))fault;
--(NSNumber *) freePlaces;
++ (instancetype)initStatusWithParkingIdAndObjectId:(NSNumber *)parkingId objectId:(NSNumber *)objectId;
+- (void)updateStatus:(void(^)(ParkingStatus *parkingStatus))result onFault:(void(^)(NSError *error))fault;
+- (NSNumber *)freePlaces;
 
 @end
