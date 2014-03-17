@@ -12,6 +12,7 @@
 
 @protocol ParkingDelegate <NSObject>
 
+- (void) didUpdatePrediction:(Parking *)parking;
 - (void) didUpdatedStatus:(Parking *)parking;
 - (void) didUpdatedStatusesForAllParkings;
 

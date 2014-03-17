@@ -47,6 +47,8 @@
             
         } onError:^(NSError *error) {
             
+            self.stats = nil;
+            
             [self.activityIndicator stopAnimating];
             self.loadingData = NO;
             
@@ -115,7 +117,7 @@
     }
     
     //update UI
-    self.labelDay.text = [date toStringWithFormat:@"dd'. 'MMMM' 'yyyy"];
+    self.labelDay.text = self.stats ? [date toStringWithFormat:@"dd'. 'MMMM' 'yyyy"] : @"Error";
     self.chartView.stats = relevantStats;
     
     [self updateAvailableDays];

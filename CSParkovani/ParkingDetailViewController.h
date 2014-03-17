@@ -22,6 +22,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *freePlaces;
 @property (weak, nonatomic) IBOutlet UILabel *totalPlaces;
 @property (weak, nonatomic) IBOutlet UILabel *timeToFull;
+@property (weak, nonatomic) IBOutlet UILabel *arrivalTime;
 
 @property (weak, nonatomic) IBOutlet UIView *historyView;
 

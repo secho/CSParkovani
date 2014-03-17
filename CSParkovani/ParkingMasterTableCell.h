@@ -13,6 +13,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *parkingType;
 @property (weak, nonatomic) IBOutlet UILabel *freePlaces;
 @property (weak, nonatomic) IBOutlet UILabel *timeToFull;
+@property (weak, nonatomic) IBOutlet UILabel *arrivalTime;
 
 
 @end

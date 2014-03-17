@@ -8,6 +8,7 @@
 
 #import "Parking.h"
 #import "NSDate+Tools.h"
+#import "LocationService.h"
 
 static NSMutableDictionary *parkingsDictionary;
 static NSMutableDictionary *trackedParkingsDictionary;
@@ -76,6 +77,37 @@ static BOOL updatingMultipleStatuses;
 - (void)updatePrediction
 {
     
+    if (!self.prediction)
+    {
+        self.prediction = [ParkingPrediction predictionWithParkingId:self.parkingId objectId:self.objectId];
+    }
+
+    ParkingPrediction *prediction = self.prediction;
+    CLLocationCoordinate2D targetLocation = CLLocationCoordinate2DMake(self.parkingObject.latitude.floatValue, self.parkingObject.longitude.floatValue);
+    
+    [[LocationService sharedInstance] asyncGetRouteDirectionByCarToLocation:targetLocation completition:^(NSTimeInterval duration, NSError *error) {
+        
+        if (error)
+        {
+            NSLog(@"Update distance failed!");
+            return;
+        }
+    
+        NSDate *expectedArrivalDate = [NSDate dateWithTimeIntervalSinceNow:duration];
+        prediction.date = expectedArrivalDate;
+        
+        [prediction updatePrediction:^(ParkingPrediction *parkingPrediction) {
+            
+            self.prediction = parkingPrediction;
+            [self didUpdatePrediction:self];
+            
+        } onFault:^(NSError *error) {
+            
+            NSLog(@"Update prediction failed!");
+            
+        }];
+        
+    }];
 }
 
 + (NSMutableDictionary *)trackedParkingsDictionary
@@ -109,6 +141,7 @@ static BOOL updatingMultipleStatuses;
     {
         Parking *parking = [trackedParkingsDictionary objectForKey:key];
         [parking updateStatus];
+        [parking updatePrediction];
     }
 }
 
@@ -145,10 +178,26 @@ static BOOL updatingMultipleStatuses;
     }
 }
 
++ (void)updateTrackedParkingsPredictions
+{
+    for (NSArray *key in trackedParkingsDictionary.allKeys)
+    {
+        Parking *parking = [trackedParkingsDictionary objectForKey:key];
+        [parking updatePrediction];
+    }
+}
 
 + (NSMutableDictionary *)parkingsDictionary
 {
     return parkingsDictionary;
+}
+
+- (void)didUpdatePrediction:(Parking *)parking
+{
+    if (delegate && [delegate respondsToSelector:@selector(didUpdatePrediction:)])
+    {
+        [delegate didUpdatePrediction:self];
+    }
 }
 
 - (void)didUpdatedStatus:(Parking *)parking
@@ -165,6 +214,7 @@ static BOOL updatingMultipleStatuses;
         }
     }
 }
+
 
 - (void)didUpdatedStatusesForAllParkings
 {

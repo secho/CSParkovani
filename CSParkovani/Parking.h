@@ -12,6 +12,7 @@
 #import "ParkingStatus.h"
 #import "ParkingDelegate.h"
 #import "ParkingStatistics.h"
+#import "ParkingPrediction.h"
 
 @interface Parking : NSObject <ParkingDelegate>
 
@@ -22,6 +23,7 @@
 @property (nonatomic, copy) NSString *enabled;
 @property ParkingObject *parkingObject;
 @property ParkingStatus *status;
+@property ParkingPrediction *prediction;
 
 /**
  * Return truncated name of the Parking object. Last part of 'P3 - Polackova - ostatni' will be returned.
@@ -47,6 +49,11 @@
  * Inovkes prediction update of the Parking instance.
  */
 - (void)updatePrediction;
+
+/**
+ * Update prediction properties of all parking objects within trackedParkingsDictionary
+ */
++ (void)updateTrackedParkingsPredictions;
 
 /**
  * Get all parking objects from REST API. After response is returned fill parkingsDictionary and callback.

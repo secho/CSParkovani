@@ -58,7 +58,8 @@ typedef enum {
     self.location.text = parkingModel.parkingObject.name;
     self.parkingType.text = parkingModel.truncatedName;
     self.freePlaces.text = parkingModel.status.freePlaces.description;
-    self.totalPlaces.text = [NSString stringWithFormat:@"z %d", parkingModel.status.limitTotal.intValue];
+    self.totalPlaces.text = [NSString stringWithFormat:@"míst volných\nz celkových %d", parkingModel.status.limitTotal.intValue];
+    self.arrivalTime.text = parkingModel.prediction.date ? [parkingModel.prediction.date toStringWithFormat:@"hh':'mm"] : @"N/A";
 }
 
 - (void)showHistoryForThisWeek

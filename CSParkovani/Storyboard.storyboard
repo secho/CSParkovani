@@ -21,33 +21,33 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="fRB-Jp-jgw">
-                                            <rect key="frame" x="20" y="12" width="187" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <rect key="frame" x="20" y="12" width="262" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="23"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="000" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="AK7-TB-zwz">
                                             <rect key="frame" x="215" y="33" width="67" height="42"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="38"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="xQA-gM-PHg">
                                             <rect key="frame" x="20" y="36" width="187" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="15"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kdy bude plně obszeno:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="HYR-9T-5l8">
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Předpokládaný dojezd:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="HYR-9T-5l8">
                                             <rect key="frame" x="20" y="74" width="159" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="15"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="9gD-hS-jhp">
-                                            <rect key="frame" x="178" y="74" width="46" height="21"/>
+                                            <rect key="frame" x="169" y="74" width="46" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="15"/>
                                             <nil key="highlightedColor"/>
@@ -55,10 +55,10 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="arrivalTime" destination="9gD-hS-jhp" id="GLu-zI-lSA"/>
                                     <outlet property="freePlaces" destination="AK7-TB-zwz" id="Ceh-0u-LmZ"/>
                                     <outlet property="location" destination="fRB-Jp-jgw" id="Fb1-Qn-ewp"/>
                                     <outlet property="parkingType" destination="xQA-gM-PHg" id="3M1-aL-Z4c"/>
-                                    <outlet property="timeToFull" destination="9gD-hS-jhp" id="eUb-Ya-vBC"/>
                                     <segue destination="Vpc-6k-Fv8" kind="push" identifier="toDetailView" id="67Q-dC-Fe1"/>
                                 </connections>
                             </tableViewCell>
@@ -149,14 +149,14 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ddt-a9-WLO">
-                                        <rect key="frame" x="20" y="81" width="280" height="21"/>
+                                        <rect key="frame" x="20" y="81" width="205" height="21"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="23"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="000" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="WrF-Ef-cd4">
-                                        <rect key="frame" x="233" y="102" width="67" height="42"/>
+                                        <rect key="frame" x="233" y="77" width="67" height="42"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="38"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -168,22 +168,22 @@
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="15"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kdy bude plně obszeno:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="nxC-Vq-QVH">
-                                        <rect key="frame" x="20" y="143" width="159" height="21"/>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Předpokládaný dojezd:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="nxC-Vq-QVH">
+                                        <rect key="frame" x="20" y="203" width="147" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="15"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="HLb-mn-AFB">
-                                        <rect key="frame" x="178" y="143" width="46" height="21"/>
+                                        <rect key="frame" x="170" y="203" width="46" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="15"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="z" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="PQB-0c-RQt">
-                                        <rect key="frame" x="233" y="143" width="67" height="21"/>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="míst volných z celkových 123" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="PQB-0c-RQt">
+                                        <rect key="frame" x="200" y="117" width="100" height="33"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="15"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="13"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" id="7Rx-iz-fi0">
@@ -217,12 +217,12 @@
                     </view>
                     <navigationItem key="navigationItem" title="Detail parkoviště" id="HME-1t-kaK"/>
                     <connections>
+                        <outlet property="arrivalTime" destination="HLb-mn-AFB" id="VGD-Pu-ZUx"/>
                         <outlet property="freePlaces" destination="WrF-Ef-cd4" id="Unq-sK-2CL"/>
                         <outlet property="historyView" destination="7Rx-iz-fi0" id="nTE-lG-OV1"/>
                         <outlet property="location" destination="ddt-a9-WLO" id="geo-CW-SYg"/>
                         <outlet property="parkingType" destination="gya-Fp-IEQ" id="P1s-Un-1lC"/>
                         <outlet property="scrollView" destination="ODm-Uy-tcv" id="TYp-SN-HJj"/>
-                        <outlet property="timeToFull" destination="HLb-mn-AFB" id="a14-zm-Hix"/>
                         <outlet property="totalPlaces" destination="PQB-0c-RQt" id="PoL-YR-BcP"/>
                     </connections>
                 </viewController>
@@ -274,6 +274,7 @@
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="320"/>
                     <connections>
                         <outlet property="activityIndicator" destination="WbD-a9-IzN" id="mgn-lg-UXQ"/>
                         <outlet property="chartView" destination="UMZ-mM-mNT" id="pZC-zg-yXl"/>

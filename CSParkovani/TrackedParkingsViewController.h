@@ -9,7 +9,7 @@
 #import "ParkingDelegate.h"
 #import <UIKit/UIKit.h>
 
-@interface TrackedParkingsViewController : UITableViewController <ParkingDelegate,UITableViewDelegate,UITableViewDataSource>
+@interface TrackedParkingsViewController : UITableViewController <ParkingDelegate, UITableViewDelegate, UITableViewDataSource>
 
 @property (strong, nonatomic) IBOutlet UITableView *trackedParkingTable;
 

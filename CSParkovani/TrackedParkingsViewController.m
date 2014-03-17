@@ -10,6 +10,10 @@
 #import "Parking.h"
 #import "ParkingMasterTableCell.h"
 #import "ParkingDetailViewController.h"
+#import "LocationService.h"
+#import "NSDate+Tools.h"
+
+#define TIMER_UPDATE 60.
 
 @interface TrackedParkingsViewController ()
 
@@ -73,6 +77,7 @@
             [Parking trackParkingWithParkingId:@5 objectId:@15];
             [Parking trackParkingWithParkingId:@3 objectId:@6];
             [Parking updateAllStatuses];
+            [Parking updateTrackedParkingsPredictions];
             
         } onError:^(NSError *error) {
             
@@ -80,6 +85,16 @@
             
         }];
     }
+    
+    //start autoupdate
+    [NSTimer scheduledTimerWithTimeInterval:TIMER_UPDATE target:self selector:@selector(refresh) userInfo:nil repeats:YES];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    [trackedParkingTable reloadData];
 }
 
 - (void)refresh
@@ -116,6 +131,11 @@
     [trackedParkingTable reloadData];
 }
 
+- (void)didUpdatePrediction:(Parking *)parking
+{
+    [trackedParkingTable reloadData];
+}
+
 #pragma mark Table view data source
 
 /*
@@ -143,6 +163,7 @@
     cell.parkingType.text = parkingModel.truncatedName;
     cell.location.text = parkingModel.parkingObject.name;
     cell.freePlaces.text = parkingModel.status.freePlaces.description;
+    cell.arrivalTime.text = parkingModel.prediction.date ? [parkingModel.prediction.date toStringWithFormat:@"hh':'mm"] : @"N/A";
 
 //    cell.nameLabel.text = ((Parking *)[[Parking trackedParkingsDictionary].allValues objectAtIndex:indexPath.row]).status.limitTotal.description;
 //    cell.gameLabel.text = ((Parking *)[[Parking trackedParkingsDictionary].allValues objectAtIndex:indexPath.row]).status.presentTotal.description;
@@ -165,7 +186,5 @@
         parkingDetail.parking = parkingModel;
     }
 }
-
-
 
 @end
