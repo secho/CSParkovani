@@ -61,6 +61,8 @@ typedef enum {
     self.freePlaces.text = parkingModel.status.freePlaces.description;
     self.totalPlaces.text = [NSString stringWithFormat:@"míst volných\nz celkových %d", parkingModel.status.limitTotal.intValue];
     self.arrivalTime.text = parkingModel.prediction.date ? [parkingModel.prediction.date toStringWithFormat:@"hh':'mm"] : @"N/A";
+    self.willPark.text = [ParkingPrediction messageForParkAbility:[parkingModel.prediction willBeAbleToPark]];
+    self.predictionPrecision.text = [NSString stringWithFormat:@"%d%%", (int)(100. * [parkingModel.prediction predictionPrecision])];
 }
 
 - (void)showHistoryForThisWeek

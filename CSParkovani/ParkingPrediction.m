@@ -10,6 +10,9 @@
 #import "LocationService.h"
 #import "NSDate+Tools.h"
 
+#define LIMIT_AVERAGE_0 0.
+#define LIMIT_AVERAGE_1 5.
+
 @implementation ParkingPrediction
 
 + (instancetype)predictionWithParkingId:(NSNumber *)parkingId objectId:(NSNumber *)objectId
@@ -73,6 +76,61 @@
                                        }
      
      ];
+}
+
+- (parkAbility)willBeAbleToPark
+{
+    parkAbility result = parkAbilityUnknown;
+    
+    if (self.average)
+    {
+        float average = self.average.floatValue;
+        
+        if (average <= LIMIT_AVERAGE_0)
+        {
+            result = parkAbilityNo;
+        }
+        else if (LIMIT_AVERAGE_0 < average && average < LIMIT_AVERAGE_1)
+        {
+            result = parkAbilityAtRisk;
+        }
+        else if (LIMIT_AVERAGE_1 <= average)
+        {
+            result = parkAbilityYes;
+        }
+    }
+    
+    return result;
+}
+
+- (float)predictionPrecision
+{
+    float result = 0;
+    
+    if (self.yes && self.count)
+    {
+        result = self.yes.floatValue / self.count.floatValue;
+    }
+    
+    return result;
+}
+
++ (NSString *)messageForParkAbility:(parkAbility)parkAbility
+{
+    switch (parkAbility)
+    {
+        case parkAbilityYes:
+            return @"ANO";
+            
+        case parkAbilityNo:
+            return @"NE";
+            
+        case parkAbilityAtRisk:
+            return @"riskantní";
+            
+        case parkAbilityUnknown:
+            return @"--";
+    }
 }
 
 @end

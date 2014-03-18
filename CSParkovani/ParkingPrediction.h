@@ -9,6 +9,15 @@
 #import <Foundation/Foundation.h>
 #import <RestKit.h>
 
+typedef enum {
+    
+    parkAbilityUnknown,
+    parkAbilityYes,
+    parkAbilityNo,
+    parkAbilityAtRisk
+    
+} parkAbility;
+
 @interface ParkingPrediction : NSObject
 
 @property(nonatomic, copy) NSNumber *parkingId;
@@ -24,8 +33,12 @@
 
 + (instancetype)predictionWithParkingId:(NSNumber *)parkingId objectId:(NSNumber *)objectId;
 + (RKMapping *)mapping;
++ (NSString *)messageForParkAbility:(parkAbility)parkAbility;
 
 - (id)initWithParkingId:(NSNumber *)parkingId objectId:(NSNumber *)objectId;
 - (void)updatePrediction:(void (^)(ParkingPrediction *))result onFault:(void (^)(NSError *))fault;
+
+- (parkAbility)willBeAbleToPark;
+- (float)predictionPrecision;
 
 @end

@@ -17,12 +17,14 @@
 
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 
-@property (weak, nonatomic) IBOutlet UILabel *location;
-@property (weak, nonatomic) IBOutlet UILabel *parkingType;
-@property (weak, nonatomic) IBOutlet UILabel *freePlaces;
-@property (weak, nonatomic) IBOutlet UILabel *totalPlaces;
-@property (weak, nonatomic) IBOutlet UILabel *timeToFull;
-@property (weak, nonatomic) IBOutlet UILabel *arrivalTime;
+@property (retain, nonatomic) IBOutlet UILabel *location;
+@property (retain, nonatomic) IBOutlet UILabel *parkingType;
+@property (retain, nonatomic) IBOutlet UILabel *freePlaces;
+@property (retain, nonatomic) IBOutlet UILabel *totalPlaces;
+@property (retain, nonatomic) IBOutlet UILabel *timeToFull;
+@property (retain, nonatomic) IBOutlet UILabel *arrivalTime;
+@property (retain, nonatomic) IBOutlet UILabel *willPark;
+@property (retain, nonatomic) IBOutlet UILabel *predictionPrecision;
 
 @property (weak, nonatomic) IBOutlet UIView *historyView;
 

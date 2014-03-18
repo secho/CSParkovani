@@ -164,6 +164,7 @@
     cell.location.text = parkingModel.parkingObject.name;
     cell.freePlaces.text = parkingModel.status.freePlaces.description;
     cell.arrivalTime.text = parkingModel.prediction.date ? [parkingModel.prediction.date toStringWithFormat:@"hh':'mm"] : @"N/A";
+    cell.parkAbility.text = [ParkingPrediction messageForParkAbility:[parkingModel.prediction willBeAbleToPark]];
 
 //    cell.nameLabel.text = ((Parking *)[[Parking trackedParkingsDictionary].allValues objectAtIndex:indexPath.row]).status.limitTotal.description;
 //    cell.gameLabel.text = ((Parking *)[[Parking trackedParkingsDictionary].allValues objectAtIndex:indexPath.row]).status.presentTotal.description;

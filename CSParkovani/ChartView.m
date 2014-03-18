@@ -111,9 +111,11 @@
         {
             UIView *hourView = self.hourViews[i];
             ParkingStatistics *stat = self.stats[i];
+            CGFloat fill = stat.free.doubleValue / self.totalParkingSlots;
+            if (fill != fill) fill = 1.;    //avoid nan
             
             CGRect newFrame = hourView.frame;
-            newFrame.size.height = (stat.free.doubleValue / self.totalParkingSlots) * (self.bounds.size.height - SPACING_TOP - SPACING_BOTTOM);
+            newFrame.size.height = fill * (self.bounds.size.height - SPACING_TOP - SPACING_BOTTOM);
             if (newFrame.size.height < 0.) newFrame.size.height = 0.;
             newFrame.origin.y = bottomLine - newFrame.size.height;
             hourView.frame = newFrame;
