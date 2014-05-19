@@ -12,6 +12,7 @@
 #import "ParkingDetailViewController.h"
 #import "LocationService.h"
 #import "NSDate+Tools.h"
+#import "ProgressHUD.h"
 
 #define TIMER_UPDATE 60.
 
@@ -58,9 +59,15 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 
+
+
+    trackedParkingTable.backgroundColor = [UIColor clearColor];
+
     refresher = [[UIRefreshControl alloc] init];
     [refresher addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
     self.refreshControl = refresher;
+
+    [ProgressHUD show:@"Kontroluji parkoviště .."];
 
     // Getting parkings here
     // TODO: this has to be cleaned
@@ -129,6 +136,7 @@
     }
     
     [trackedParkingTable reloadData];
+    [ProgressHUD dismiss];
 }
 
 - (void)didUpdatePrediction:(Parking *)parking
@@ -138,38 +146,83 @@
 
 #pragma mark Table view data source
 
-/*
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 0;
+    return 2;
 }
-**/
+
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [Parking trackedParkingsDictionary].count;
+
+    NSInteger count = 0;
+
+    switch (section) {
+        case 0: {
+            count=1;
+        } break;
+        case 1: {
+            count = [Parking trackedParkingsDictionary].count;
+        }
+    }
+
+    return count;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    CGFloat heigh;
+
+    switch (indexPath.section) {
+        case 0: {
+            heigh=36.0;
+        } break;
+        case 1: {
+            heigh=110.0;
+        }break;
+    }
+    return heigh;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    ParkingMasterTableCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ParkingMasterTableCell"];
-    
-    if (cell == nil)
-    {
-        cell = [[ParkingMasterTableCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"ParkingMasterTableCell"];
+
+    switch (indexPath.section) {
+        case 0:{
+            UITableViewCell *statusCell = [tableView dequeueReusableCellWithIdentifier:@"LastUpdatedCell"];
+            if (statusCell ==nil) {
+                statusCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"LastUpdatedCell"];
+            }
+
+            NSLog(@"creating status cell");
+            return statusCell;
+        }
+
+        case 1:{
+            ParkingMasterTableCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ParkingMasterTableCell"];
+
+            if (cell == nil)
+            {
+                cell = [[ParkingMasterTableCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"ParkingMasterTableCell"];
+            }
+
+            Parking *parkingModel = [self parkingModelForIndexPath:indexPath];
+            cell.parkingType.text = parkingModel.truncatedName;
+            cell.location.text = parkingModel.parkingObject.name;
+            cell.freePlaces.text = parkingModel.status.freePlaces.description;
+            cell.arrivalTime.text = parkingModel.prediction.date ? [parkingModel.prediction.date toStringWithFormat:@"hh':'mm"] : @"N/A";
+            cell.parkAbility.text = [ParkingPrediction messageForParkAbility:[parkingModel.prediction willBeAbleToPark]];
+            cell.backgroundColor = [UIColor clearColor];
+
+            return cell;
+        }
+
+        default: break;
     }
 
-    Parking *parkingModel = [self parkingModelForIndexPath:indexPath];
-    cell.parkingType.text = parkingModel.truncatedName;
-    cell.location.text = parkingModel.parkingObject.name;
-    cell.freePlaces.text = parkingModel.status.freePlaces.description;
-    cell.arrivalTime.text = parkingModel.prediction.date ? [parkingModel.prediction.date toStringWithFormat:@"hh':'mm"] : @"N/A";
-    cell.parkAbility.text = [ParkingPrediction messageForParkAbility:[parkingModel.prediction willBeAbleToPark]];
+    return [[UITableViewCell alloc] init];
 
-//    cell.nameLabel.text = ((Parking *)[[Parking trackedParkingsDictionary].allValues objectAtIndex:indexPath.row]).status.limitTotal.description;
-//    cell.gameLabel.text = ((Parking *)[[Parking trackedParkingsDictionary].allValues objectAtIndex:indexPath.row]).status.presentTotal.description;
-    
-    return cell;
 
 }
 

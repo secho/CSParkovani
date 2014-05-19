@@ -291,7 +291,7 @@ NSArray * AFQueryStringPairsFromKeyAndValue(NSString *key, id value) {
     self.allowsInvalidSSLCertificate = YES;
 #endif
     //TODO: zrusit
-    self.allowsInvalidSSLCertificate = YES;
+
     
     
     return self;
